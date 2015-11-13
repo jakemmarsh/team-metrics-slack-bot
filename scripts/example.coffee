@@ -13,11 +13,7 @@ print_metrics = (msg) ->
 
 module.exports = (robot) ->
 
-  robot.hear /team/i, (msg) ->
-    msg.send "ROLL CALL:"
-    msg.send ":jake:\n:john:\n:akshay:\n:alice:\n:emily:\n:kev:"
-
-  robot.hear /squad/i, (msg) ->
+  robot.hear /^(squad|team)$/i, (msg) ->
     msg.send "ROLL CALL:"
     msg.send ":jake:\n:john:\n:akshay:\n:alice:\n:emily:\n:kev:"
 
