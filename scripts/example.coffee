@@ -35,6 +35,8 @@ module.exports = (robot) ->
 
   robot.hear /^metrics$/i, (msg) ->
     print_metrics(msg)
+  robot.hear /^merits$/i, (msg) ->
+    print_merits(msg)
 
   robot.hear /^(.*)\+\+$/i, (msg) ->
     key = msg.match[1].toLowerCase()
