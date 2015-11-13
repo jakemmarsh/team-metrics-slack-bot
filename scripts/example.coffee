@@ -44,7 +44,7 @@ module.exports = (robot) ->
       sender = msg.message.user.name.toLowerCase()
       metrics[key] += 1
       print_metrics(msg)
-    if key of merits
+    else if key of merits
       sender = msg.message.user.name.toLowerCase()
       merits[key] += 1
       print_merits(msg)
@@ -59,7 +59,7 @@ module.exports = (robot) ->
       if val > 0
         metrics[key] = val - 1
       print_metrics(msg)
-    if key of merits
+    else if key of merits
       sender = msg.message.user.name.toLowerCase()
       val = merits[key]
       if val > 0
