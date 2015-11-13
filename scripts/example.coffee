@@ -7,15 +7,15 @@ metrics = {
 }
 
 print_metrics = (msg) ->
-  msg.send "current metrics"
+  output = "current metrics"
   for key, val of metrics
-    msg.send "#{key}: #{val}"
+    output += "\n#{key}: #{val}"
+  msg.send output
 
 module.exports = (robot) ->
 
   robot.hear /^(squad|team)$/i, (msg) ->
-    msg.send "ROLL CALL:"
-    msg.send ":jake:\n:john:\n:akshay:\n:alice:\n:emily:\n:kev:"
+    msg.send "ROLL CALL\n:jake:\n:john:\n:akshay:\n:alice:\n:emily:\n:kev:"
 
   robot.hear /^metrics$/i, (msg) ->
     print_metrics(msg)
