@@ -7,13 +7,13 @@ metrics = {
 }
 
 merits = {
-  Akshay: 0,
-  Alice: 0,
-  Emily: 0,
-  Jake: 0,
-  John: 0,
-  Jake: 0,
-  Kevin: 0,
+  akshay: 0,
+  alice: 0,
+  emily: 0,
+  jake: 0,
+  john: 0,
+  jake: 0,
+  kevin: 0,
 }
 
 print_metrics = (msg) ->
