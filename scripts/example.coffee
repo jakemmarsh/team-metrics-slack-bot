@@ -45,12 +45,20 @@ module.exports = (robot) ->
       msg.send "'#{key}' not one of: #{Object.keys(metrics)}"
 
   robot.hear /^metrics add (.*)$/i, (msg) ->
-    metric = msg.match[1]
-    if /[A-Za-z_]/.test msg.match[1]
+    metric = msg.match[1].toLowerCase()
+    if /[a-z_]/.test msg.match[1]
       metrics[metric] = 0
       print_metrics(msg)
     else
       msg.send "could not add '#{metric}', must contain only letters and underscores"
+
+  robot.hear /^metrics remove (.*)$/i, (msg) ->
+    key = msg.match[1].toLowerCase()
+    if key of metrics
+      delete metrics[key]
+      print_metrics(msg)
+    else
+      msg.send "could not remove '#{key}', does not exist"
 
   # help = "usage: metrics <command>"
   # help += "\n"
