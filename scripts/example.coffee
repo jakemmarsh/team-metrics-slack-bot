@@ -6,11 +6,27 @@ metrics = {
   thought: 0
 }
 
+merits = {
+  Akshay: 0,
+  Alice: 0,
+  Emily: 0,
+  Jake: 0,
+  John: 0,
+  Jake: 0,
+  Kevin: 0,
+}
+
 print_metrics = (msg) ->
   output = "current metrics"
   for key, val of metrics
     output += "\n#{key}: #{val}"
   msg.send output
+print_merits = (msg) ->
+  output = "current merits"
+  for key, val of merits
+    output += "\n#{key}: #{val}"
+  msg.send output
+
 
 module.exports = (robot) ->
 
@@ -26,6 +42,10 @@ module.exports = (robot) ->
       sender = msg.message.user.name.toLowerCase()
       metrics[key] += 1
       print_metrics(msg)
+    if key of merits
+      sender = msg.message.user.name.toLowerCase()
+      merits[key] += 1
+      print_merits(msg)
     else
       msg.send "'#{key}' not one of: #{Object.keys(metrics)}"
 
@@ -37,6 +57,12 @@ module.exports = (robot) ->
       if val > 0
         metrics[key] = val - 1
       print_metrics(msg)
+    if key of merits
+      sender = msg.message.user.name.toLowerCase()
+      val = merits[key]
+      if val > 0
+        merits[key] = val - 1
+      print_merits(msg)
     else
       msg.send "'#{key}' not one of: #{Object.keys(metrics)}"
 
