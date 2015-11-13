@@ -61,9 +61,7 @@ module.exports = (robot) ->
       print_metrics(msg)
     else if key of merits
       sender = msg.message.user.name.toLowerCase()
-      val = merits[key]
-      if val > 0
-        merits[key] = val - 1
+      merits[key] -= 1
       print_merits(msg)
     else
       msg.send "'#{key}' not one of: #{Object.keys(metrics)}"
